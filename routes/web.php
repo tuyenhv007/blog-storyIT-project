@@ -18,5 +18,7 @@ Route::get('/', function () {
 });
 
 Route::prefix('admin')->group(function () {
-
+    Route::get('/category-list', 'CategoryController@index')->name('category.index');
+    Route::get('/category-create', 'CategoryController@create')->name('category.create');
+    Route::post('/category-create', 'CategoryController@store')->name('category.store');
 });
