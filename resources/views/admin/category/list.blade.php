@@ -28,8 +28,8 @@
                         <td scope="row">{{ $item++ }}</td>
                         <td>{{ $category->name }}</td>
                         <td>
-                            <a href=""><i class="fa fa-edit"></i></a>
-                            <a href="" ><i class="fa fa-trash" style="color: red"></i></a>
+                            <a href="{{ route('category.edit', $category->id) }}"><i class="fa fa-edit"></i></a>
+                            <a href=""><i class="fa fa-trash" style="color: red"></i></a>
                         </td>
                     </tr>
                 @endforeach

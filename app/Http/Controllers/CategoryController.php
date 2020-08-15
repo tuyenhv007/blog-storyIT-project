@@ -32,4 +32,19 @@ class CategoryController extends Controller
         return redirect()->route('category.index');
     }
 
+    public function edit($id)
+    {
+        $category = $this->categoryService->findById($id);
+        return view('admin.category.edit', compact('category'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $category = $this->categoryService->findById($id);
+        $this->categoryService->update($request, $category);
+        toastr()->success('Chỉnh sửa danh mục thành công!');
+        return redirect()->route('category.index');
+    }
+
+
 }
