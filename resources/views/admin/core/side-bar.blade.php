@@ -15,8 +15,8 @@
                 </a>
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="">Danh sách</a>
-                        <a class="nav-link" href="">Thêm mới</a>
+                        <a class="nav-link" href="{{ route('category.index') }}">Danh sách</a>
+                        <a class="nav-link" href="{{ route('category.create') }}">Thêm mới</a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
