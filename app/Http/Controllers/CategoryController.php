@@ -46,5 +46,13 @@ class CategoryController extends Controller
         return redirect()->route('category.index');
     }
 
+    public function delete($id)
+    {
+        $category = $this->categoryService->findById($id);
+        $this->categoryService->delete($category);
+        toastr()->success('Xóa danh mục thành công!');
+        return redirect()->route('category.index');
+    }
+
 
 }
