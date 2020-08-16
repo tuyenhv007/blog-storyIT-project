@@ -26,12 +26,23 @@ Route::get('/logout', 'LoginController@logout')->name('logout');
 Route::middleware(['user'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('/index', 'DashboardController@index')->name('dashboard.index');
-        Route::get('/category-list', 'CategoryController@index')->name('category.index');
-        Route::get('/category-create', 'CategoryController@create')->name('category.create');
-        Route::post('/category-create', 'CategoryController@store')->name('category.store');
-        Route::get('/category-edit/{id}', 'CategoryController@edit')->name('category.edit');
-        Route::post('/category-edit/{id}', 'CategoryController@update')->name('category.update');
-        Route::get('/category-delete/{id}', 'CategoryController@delete')->name('category.delete');
+        Route::prefix('/category')->group(function () {
+            Route::get('/list', 'CategoryController@index')->name('category.index');
+            Route::get('/create', 'CategoryController@create')->name('category.create');
+            Route::post('/create', 'CategoryController@store')->name('category.store');
+            Route::get('/edit/{id}', 'CategoryController@edit')->name('category.edit');
+            Route::post('/edit/{id}', 'CategoryController@update')->name('category.update');
+            Route::get('/delete/{id}', 'CategoryController@delete')->name('category.delete');
+        });
+        Route::prefix('/post')->group(function () {
+            Route::get('/list', 'PostController@index')->name('post.index');
+            Route::get('/create', 'PostController@create')->name('post.create');
+            Route::post('/create', 'PostController@store')->name('post.store');
+            Route::get('/edit/{id}', 'PostController@edit')->name('post.edit');
+            Route::post('/edit/{id}', 'PostController@update')->name('post.update');
+            Route::get('/delete/{id}', 'PostController@delete')->name('post.delete');
+
+        });
     });
 });
 
