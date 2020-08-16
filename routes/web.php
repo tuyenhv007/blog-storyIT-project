@@ -17,6 +17,13 @@ Route::get('/', function () {
     return view('admin.layouts.master');
 });
 
+Route::get('/register', 'LoginController@registerIndex')->name('register.index');
+Route::post('/register', 'LoginController@register')->name('register.create');
+Route::get('/login', 'LoginController@loginIndex')->name('login.index');
+Route::post('/login', 'LoginController@login')->name('login.create');
+
+
+
 Route::prefix('admin')->group(function () {
     Route::get('/category-list', 'CategoryController@index')->name('category.index');
     Route::get('/category-create', 'CategoryController@create')->name('category.create');
@@ -25,3 +32,4 @@ Route::prefix('admin')->group(function () {
     Route::post('/category-edit/{id}', 'CategoryController@update')->name('category.update');
     Route::get('/category-delete/{id}', 'CategoryController@delete')->name('category.delete');
 });
+
