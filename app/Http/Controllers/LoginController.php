@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\RegisterRequest;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -29,6 +30,34 @@ class LoginController extends Controller
     public function loginIndex()
     {
         return view('admin.user.login');
+    }
+
+    public function login(Request $request)
+    {
+        $email = $request->email;
+        $password = md5($request->password);
+
+        $user = User::where([
+            ['email', '=', $email],
+            ['password', '=', $password]
+        ])->first();
+        if ($user) {
+            $login = $user->count();
+            if ($login > 0) {
+                Session::put('user', $user);
+                toastr()->success('Đăng nhập thành công!');
+                return redirect()->route('dashboard.index');
+            }
+        } else {
+            Session::put('message', 'Sai email đăng nhập hoặc mật khẩu!');
+            return redirect()->route('login.index');
+        }
+    }
+
+    public function logout()
+    {
+        Session::put('user', null);
+        return redirect()->route('login.index');
     }
 
 

@@ -7,6 +7,8 @@
     <title>Sign Up</title>
     <base href="{{ asset('') }}">
     @toastr_css
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
           crossorigin="anonymous"/>
 
@@ -24,30 +26,40 @@
             <div class="signin-content">
                 <div class="signin-image">
                     <figure><img src="images/signin-image.jpg" alt="sing up image"></figure>
-                    <a href="#" class="signup-image-link">Create an account</a>
+                    <a href="{{ route('register.index') }}" class="signup-image-link">Tạo mới tài khoản</a>
                 </div>
 
                 <div class="signin-form">
-                    <h2 class="form-title">Sign up</h2>
+                    <h2 class="form-title">Đăng Nhập</h2>
                     <form method="POST" class="register-form" id="login-form">
+                        @csrf
                         <div class="form-group">
-                            <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                            <input type="text" name="your_name" id="your_name" placeholder="Your Name"/>
+                            <label for="email"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input type="text" name="email" id="email" placeholder="Email" required/>
                         </div>
                         <div class="form-group">
-                            <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                            <input type="password" name="your_pass" id="your_pass" placeholder="Password"/>
+                            <label for="password"><i class="zmdi zmdi-lock"></i></label>
+                            <input type="password" name="password" id="password" placeholder="Password" required/>
                         </div>
                         <div class="form-group">
-                            <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
-                            <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
+                            <input type="checkbox" name="remember-me" id="remember-me" class="agree-term"/>
+                            <label for="remember-me" class="label-agree-term"><span><span></span></span>Ghi nhớ tài
+                                khoản</label>
                         </div>
                         <div class="form-group form-button">
-                            <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                            <button class="btn btn-info">Đăng nhập</button>
                         </div>
+                        @if(\Illuminate\Support\Facades\Session::get('message'))
+                            <div class="alert alert-danger" role="alert">
+                                <strong>Sai tên đăng nhập hoặc mật khẩu !</strong>
+                            </div>
+                            <?php
+                            \Illuminate\Support\Facades\Session::put('message', null);
+                            ?>
+                        @endif
                     </form>
                     <div class="social-login">
-                        <span class="social-label">Or login with</span>
+                        <span class="social-label">Hoặc đăng nhập bằng</span>
                         <ul class="socials">
                             <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
                             <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
