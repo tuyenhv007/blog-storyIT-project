@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryRequest;
 use App\Http\Services\CategoryService;
 use Illuminate\Http\Request;
 
@@ -25,10 +26,10 @@ class CategoryController extends Controller
         return view('admin.category.create');
     }
 
-    public function store(Request $request)
+    public function store(CategoryRequest $categoryRequest)
     {
-        $this->categoryService->create($request);
-        toastr()->success('Tạo mới danh mục thành công');
+        $this->categoryService->create($categoryRequest);
+        toastr()->success('Tạo mới thể loại thành công');
         return redirect()->route('category.index');
     }
 
@@ -38,11 +39,11 @@ class CategoryController extends Controller
         return view('admin.category.edit', compact('category'));
     }
 
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $categoryRequest, $id)
     {
         $category = $this->categoryService->findById($id);
-        $this->categoryService->update($request, $category);
-        toastr()->success('Chỉnh sửa danh mục thành công!');
+        $this->categoryService->update($categoryRequest, $category);
+        toastr()->success('Chỉnh sửa thể loại thành công!');
         return redirect()->route('category.index');
     }
 
@@ -50,7 +51,7 @@ class CategoryController extends Controller
     {
         $category = $this->categoryService->findById($id);
         $this->categoryService->delete($category);
-        toastr()->success('Xóa danh mục thành công!');
+        toastr()->success('Xóa thể loại thành công!');
         return redirect()->route('category.index');
     }
 

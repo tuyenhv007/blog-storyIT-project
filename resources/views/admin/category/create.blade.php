@@ -5,19 +5,28 @@
         <li class="breadcrumb-item active">
             <a href="">Bảng điều khiển</a>
         </li>
-        <li class="breadcrumb-item active"><a href="">Tạo mới Danh mục</a></li>
+        <li class="breadcrumb-item active"><a href="">Tạo mới thể loại</a></li>
     </ol>
 
     <div class="card">
         <div class="card-header">
-            Tạo mới Danh mục
+            Tạo mới thể loại
         </div>
         <div class="card-body">
             <form method="post" action="{{ route('category.store') }}">
                 @csrf
+                @if($errors->all())
+                    <div class="alert alert-danger" role="alert">
+                        <strong>Lỗi phát sinh khi thêm thể loại!</strong>
+                    </div>
+                @endif
                 <div class="form-group">
-                    <label>Tên danh mục</label>
-                    <input type="text" class="form-control" name="name" autofocus required>
+                    <label class="{{ $errors->first('name') ? 'text-danger' : '' }}">Tên thể loại (*)</label>
+                    <input type="text" class="form-control {{ $errors->first('name') ? 'is-invalid' : '' }}"
+                           value="{{ old('name') }}" name="name" autofocus required>
+                    @if($errors->first('name'))
+                        <p class="alert alert-danger">{{ $errors->first('name') }}</p>
+                    @endif
                 </div>
 
                 <button type="submit" class="btn btn-primary">Thêm</button>
