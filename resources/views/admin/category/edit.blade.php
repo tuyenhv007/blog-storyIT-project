@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'Add New Category')
+@section('title', 'Chỉnh sửa thể loại')
 @section('content')
     <ol class="breadcrumb mb-4 mt-4">
         <li class="breadcrumb-item active">
