@@ -25,7 +25,7 @@
         <div class="container">
             <div class="signup-content">
                 <div class="signup-form">
-                    <h2 class="form-title">Sign up</h2>
+                    <h2 class="form-title">Đăng Ký</h2>
                     <form method="POST" class="register-form" id="register-form">
                         @csrf
                         @if($errors->all())
@@ -37,28 +37,28 @@
                             <label for="name" class="{{ $errors->first('name') ? 'text-danger' : '' }}"><i
                                     class="zmdi zmdi-account material-icons-name"></i></label>
                             <input type="text" class="{{ $errors->first('name') ? 'is-invalid' : '' }}" name="name"
-                                   id="name" placeholder="Your Name" required value="{{ old('name') }}"/>
+                                   id="name" placeholder="Tên" required value="{{ old('name') }}"/>
                             @if($errors->first('name'))
                                 <p class="alert alert-danger">{{ $errors->first('name') }}</p>
                             @endif
                         </div>
                         <div class="form-group">
                             <label for="email"><i class="zmdi zmdi-email {{ $errors->first('email') ? 'text-danger' : '' }}"></i></label>
-                            <input type="email" class="{{ $errors->first('email') ? 'is-invalid' : '' }}" name="email" id="email" placeholder="Your Email" required value="{{ old('email') }}"/>
+                            <input type="email" class="{{ $errors->first('email') ? 'is-invalid' : '' }}" name="email" id="email" placeholder="Email" required value="{{ old('email') }}"/>
                             @if($errors->first('email'))
                                 <p class="alert alert-danger">{{ $errors->first('email') }}</p>
                             @endif
                         </div>
                         <div class="form-group">
                             <label for="pass"><i class="zmdi zmdi-lock {{ $errors->first('pass') ? 'text-danger' : '' }}"></i></label>
-                            <input type="password" class="{{ $errors->first('pass') ? 'is-invalid' : '' }}" name="pass" id="pass" placeholder="Password" required />
+                            <input type="password" class="{{ $errors->first('pass') ? 'is-invalid' : '' }}" name="pass" id="pass" placeholder="Mật khẩu" required />
                             @if($errors->first('pass'))
                                 <p class="alert alert-danger">{{ $errors->first('pass') }}</p>
                             @endif
                         </div>
                         <div class="form-group">
                             <label for="re-pass"><i class="zmdi zmdi-lock-outline {{ $errors->first('re_pass') ? 'text-danger' : '' }}"></i></label>
-                            <input type="password" class="{{ $errors->first('re_pass') ? 'is-invalid' : '' }}" name="re_pass" id="re_pass" placeholder="Repeat your password"
+                            <input type="password" class="{{ $errors->first('re_pass') ? 'is-invalid' : '' }}" name="re_pass" id="re_pass" placeholder="Nhập lại mật khẩu"
                                    required />
                             @if($errors->first('re_pass'))
                                 <p class="alert alert-danger">{{ $errors->first('re_pass') }}</p>
@@ -72,6 +72,7 @@
                 </div>
                 <div class="signup-image">
                     <figure><img src="images/signup-image.jpg" alt="sing up image"></figure>
+                    <a href="{{ route('login.index') }}" class="signup-image-link">Đăng nhập tại đây</a>
                 </div>
             </div>
         </div>
