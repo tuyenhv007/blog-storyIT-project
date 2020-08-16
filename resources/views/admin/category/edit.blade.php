@@ -15,9 +15,18 @@
         <div class="card-body">
             <form method="post" action="{{ route('category.update', $category->id) }}">
                 @csrf
+                @if($errors->all())
+                    <div class="alert alert-danger" role="alert">
+                        <strong>Lỗi phát sinh khi thêm thể loại!</strong>
+                    </div>
+                @endif
                 <div class="form-group">
-                    <label>Tên danh mục</label>
-                    <input type="text" class="form-control" name="name" value="{{ $category->name }}" autofocus required>
+                    <label class="{{ $errors->first('name') ? 'text-danger' : '' }}">Tên thể loại (*)</label>
+                    <input type="text" class="form-control {{ $errors->first('name') ? 'is-invalid' : '' }}"
+                           value="{{ $category->name }}" name="name" autofocus required>
+                    @if($errors->first('name'))
+                        <p class="alert alert-danger">{{ $errors->first('name') }}</p>
+                    @endif
                 </div>
 
                 <button type="submit" class="btn btn-primary">Chỉnh sửa</button>
