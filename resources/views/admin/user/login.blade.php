@@ -13,10 +13,10 @@
           crossorigin="anonymous"/>
 
     <!-- Font Icon -->
-    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="{{ asset('form-login/fonts/material-icon/css/material-design-iconic-font.min.css') }}">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{ asset('form-login/css/style.css') }}">
 </head>
 <body>
 
@@ -76,8 +76,8 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="js/main.js"></script>
+<script src="{{ asset('form-login/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('form-login/js/main.js') }}"></script>
 @jquery
 @toastr_js
 @toastr_render

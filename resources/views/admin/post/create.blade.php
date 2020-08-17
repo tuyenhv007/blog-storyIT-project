@@ -67,7 +67,7 @@
                     @endif
                 </div>
                 <button type="submit" class="btn btn-primary">Đăng bài</button>
-                <a class="btn btn-secondary" href="">Hủy bỏ</a>
+                <a class="btn btn-secondary" href="{{ route('post.index') }}">Hủy bỏ</a>
             </form>
         </div>
     </div>

@@ -43,7 +43,7 @@ class LoginController extends Controller
         ])->first();
         if ($user) {
             $login = $user->count();
-            if ($login > 0) {
+            if ($login >= 0) {
                 Session::put('user', $user);
                 toastr()->success('Đăng nhập thành công!');
                 return redirect()->route('dashboard.index');

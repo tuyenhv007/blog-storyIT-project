@@ -29,7 +29,7 @@
                 @foreach($posts as $item => $post)
                     <tr>
                         <td scope="row">{{ $item++ }}</td>
-                        <td>{{ $post->title }}</td>
+                        <td><a href="{{ route('post.detailPostAdmin', $post->id) }}">{{ $post->title }}</a></td>
                         <td>{{ $post->user->name }}</td>
                         <td>{{ $post->category->name }}</td>
                         <td>{{ $post->created_at }}</td>

@@ -5,16 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sign Up</title>
-    <base href="{{ asset('') }}">
     @toastr_css
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <!-- Font Icon -->
-    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="{{ asset('form-login/fonts/material-icon/css/material-design-iconic-font.min.css') }}">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{asset('form-login/css/style.css')}}">
 </head>
 <body>
 
@@ -84,8 +83,8 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="js/main.js"></script>
+<script src="{{ asset('form-login/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('form-login/js/main.js') }}"></script>
 @jquery
 @toastr_js
 @toastr_render
